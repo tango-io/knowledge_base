@@ -20,6 +20,8 @@ gem 'haml-rails'
 
 gem 'pg'
 
+gem "omniauth-google-oauth2"
+
 group :development do
   gem 'spring'
   gem 'pry-rails'
