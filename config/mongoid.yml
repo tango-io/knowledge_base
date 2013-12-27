@@ -1,0 +1,11 @@
+development:
+  sessions:
+    default:
+      database: knowledge_base_dev
+      hosts: localhost:27017
+
+development:
+  sessions:
+    default:
+      database: knowledge_base_test
+      hosts: localhost:27017
