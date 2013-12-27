@@ -3,6 +3,7 @@
 ---
 
 [![Stories in Ready](https://badge.waffle.io/tangosource/knowledge_base.png?label=ready)](http://waffle.io/tangosource/knowledge_base)
+[![Build Status](https://travis-ci.org/tangosource/knowledge_base.png?branch=master)](https://travis-ci.org/tangosource/knowledge_base)
 
 ---
 
