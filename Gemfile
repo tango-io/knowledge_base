@@ -17,11 +17,11 @@ gem 'jbuilder', '~> 1.2'
 gem 'sdoc', group: :doc, require: false
 
 gem 'mongoid', github: 'tangosource/mongoid'
+gem 'haml-rails'
 
 group :development do
   gem 'spring'
   gem 'pry-rails'
-  gem 'haml-rails'
 end
 
 group :development, :test do
@@ -32,4 +32,5 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'webrat'
 end
