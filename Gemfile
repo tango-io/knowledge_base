@@ -28,3 +28,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'rspec-rails', '~> 3.0.0.beta'
 end
+
+group :test do
+  gem 'capybara'
+end
