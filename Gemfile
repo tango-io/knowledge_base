@@ -16,8 +16,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'sdoc', group: :doc, require: false
 
-gem 'mongoid'
-gem 'bson_ext'
+gem 'mongoid', github: 'tangosource/mongoid'
 
 group :development do
   gem 'spring'

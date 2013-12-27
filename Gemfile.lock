@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/tangosource/mongoid.git
+  revision: b10e0d3ddd1b94c831d222a65a3606d43ca21bdd
+  specs:
+    mongoid (4.0.0.alpha1)
+      activemodel (>= 4.0.0)
+      moped (~> 2.0.beta4)
+      origin (~> 2.0)
+      tzinfo (>= 0.3.37)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,9 +39,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.0)
     atomic (1.1.14)
-    bson (1.9.2)
-    bson_ext (1.9.2)
-      bson (~> 1.9.2)
+    bson (2.0.0)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -41,8 +49,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    connection_pool (1.2.0)
     diff-lcs (1.2.5)
-    durran-validatable (2.0.1)
     erubis (2.7.0)
     execjs (2.0.2)
     haml (4.0.4)
@@ -61,21 +69,19 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    leshill-will_paginate (2.3.11)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.2.0)
-    mongo (1.9.2)
-      bson (~> 1.9.2)
-    mongoid (1.0.6)
-      activesupport (>= 2.2.2)
-      durran-validatable (>= 2.0.1)
-      leshill-will_paginate (>= 2.3.11)
-      mongo (>= 0.18.2)
+    moped (2.0.0.beta4)
+      bson (~> 2.0)
+      connection_pool (~> 1.2)
+      optionable (~> 0.2.0)
     multi_json (1.8.2)
+    optionable (0.2.0)
+    origin (2.0.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -153,12 +159,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext
   coffee-rails (~> 4.0.0)
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
-  mongoid
+  mongoid!
   pry-rails
   rails (= 4.1.0.beta1)
   rspec-rails
