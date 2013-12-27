@@ -1,5 +1,12 @@
-# README
+# Knowledge Base
+
+---
+
 [![Stories in Ready](https://badge.waffle.io/tangosource/knowledge_base.png?label=ready)](http://waffle.io/tangosource/knowledge_base)
+
+---
+
+A knowledge base system for ruby developers
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
