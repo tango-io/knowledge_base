@@ -1,4 +1,5 @@
-== README
+# README
+[![Stories in Ready](https://badge.waffle.io/tangosource/knowledge_base.png?label=ready)](http://waffle.io/tangosource/knowledge_base)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -22,7 +23,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
