@@ -22,5 +22,9 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
   gem 'haml-rails'
-  gem 'rspec-rails'
+end
+
+group :development, :test do
+  gem 'factory_girl'
+  gem 'rspec-rails', '~> 3.0.0.beta'
 end
