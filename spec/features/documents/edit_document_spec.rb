@@ -6,7 +6,6 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-
 feature 'As a user I can edit a document' do
   let!(:document) { create :document }
   let!(:title) { Faker::Lorem.sentence }
