@@ -6,8 +6,9 @@ development: &common
   password:       dev
 
 test:
-  <<: *common
+  adapter:        postgresql
   database:       knowledge_base_test
+  pool:           5
 
 production:
   <<: *common
