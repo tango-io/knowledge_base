@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   get 'auth/google_oauth2/callback' => 'sessions#create'
 
-  resources :documents, except: :index
+  resources :documents, except: [:index, :destroy]
 end

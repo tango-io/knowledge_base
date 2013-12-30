@@ -9,20 +9,16 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(doc_params)
-    if @document.save
-      redirect_to @document
+    if document.save
+      redirect_to document
     else
       render :new
     end
   end
 
-  def edit
-  end
-
   def update
-    if @document.update(doc_params)
-      redirect_to(@document)
+    if document.save
+      redirect_to document
     else
       render :edit
     end
