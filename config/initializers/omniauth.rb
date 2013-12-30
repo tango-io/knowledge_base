@@ -1,3 +1,9 @@
+GOOGLE_CREDENTIALS = YAML.load_file(Rails.root.join('config/google_credentials.yml'))[Rails.env]
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV['810924789923.apps.googleusercontent.com'], ENV['q9-z-6a_GM5HxaaAHEAR_fGA']
+  provider(
+    :google_oauth2,
+    GOOGLE_CREDENTIALS['google_key'],
+    GOOGLE_CREDENTIALS['google_secret'],
+  )
 end
