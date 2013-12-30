@@ -36,4 +36,5 @@ group :test do
   gem 'os'
   gem 'pry-rails'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
