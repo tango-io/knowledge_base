@@ -3,17 +3,18 @@ require 'spec_helper'
 describe DocumentsController do
   context 'As a user I can' do
 
-    let!(document) {build :document}
+    let!(document) { create :document }
 
     it 'create a document' do
-      expect(post :create, document).to redirect_to(assigns(document))
-      expect{Document.count}.to be_eql(1)
+      document = Document.new(body: Faker::Lorem.paragraphs)
+      post :create, document
+
+      expect(response).to redirect_to(assigns(document))
+      expect(Document.count).to be_eql(1)
     end
 
     it 'edit a document' do
       new_body = Faker::Lorem.paragraphs
-
-      document.save!
       document.body = new_body
 
       put :update, document
@@ -21,9 +22,8 @@ describe DocumentsController do
     end
 
     it 'see a document' do
-      document.save!
       get :show, document
-      expect(response).to have_content(document.title)
+      expect(response).to have_content(document.body)
     end
 
   end

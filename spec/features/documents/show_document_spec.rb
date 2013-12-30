@@ -2,9 +2,9 @@ require 'spec_helper'
 
 feature 'As a user I can see a document' do
   let!(document) { create :document }
-  before do
-    visit "/"
-  end
+
+  background { visit root_path }
+
   scenario 'show document' do
     click_link(document.title)
 

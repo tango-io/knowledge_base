@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest'
   gem 'capybara'
   gem 'webrat'
   gem 'launchy'
