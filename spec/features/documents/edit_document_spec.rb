@@ -14,8 +14,8 @@ feature 'As a user I can edit a document' do
     fill_in('body', with: body)
     click_button('Save')
 
-    expect(document.title).to be_eql(title)
-    expect(document.body).to  be_eql(body)
-    expect(current_path).to be_eql(documents_path(document))
+    expect(document.title).to be_eq(title)
+    expect(document.body).to  be_eq(body)
+    expect(current_path).to be_eq(documents_path(document))
   end
 end

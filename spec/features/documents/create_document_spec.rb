@@ -13,7 +13,7 @@ feature 'As a user I can create a document' do
     fill_in('body', with: body)
     click_button('Save')
 
-    expect(Document.count).to be_eql(1)
-    expect(current_path).to be_eql(document_path(Document.first))
+    expect(Document.count).to be_eq(1)
+    expect(current_path).to be_eq(document_path(Document.first))
   end
 end
