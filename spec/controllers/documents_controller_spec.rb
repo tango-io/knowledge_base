@@ -10,7 +10,7 @@ describe DocumentsController do
       post :create, document
 
       expect(response).to redirect_to(assigns(document))
-      expect(Document.count).to be_eql(1)
+      expect(Document.count).to be_eq(1)
     end
 
     it 'edit a document' do
@@ -18,7 +18,7 @@ describe DocumentsController do
       document.body = new_body
 
       put :update, document
-      expect(document.body).to be_eql(new_body)
+      expect(document.body).to be_eq(new_body)
     end
 
     it 'see a document' do
