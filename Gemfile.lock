@@ -199,6 +199,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
+  decent_exposure
   factory_girl
   faker
   guard-rspec
