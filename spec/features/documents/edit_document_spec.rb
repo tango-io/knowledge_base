@@ -8,7 +8,7 @@ feature 'As a user I can edit a document' do
 
     visit "/"
   end
-  scenario 'create document' do
+  scenario 'edit document' do
     click_link(document.title)
     click_link('Improve this document')
     fill_in('title', with: @title)
