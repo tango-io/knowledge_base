@@ -1,4 +1,4 @@
-include 'spec_helper'
+require 'spec_helper'
 
 feature 'As a user I can create a document' do
   before do

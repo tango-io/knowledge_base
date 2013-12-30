@@ -1,4 +1,4 @@
-include 'spec_helper'
+require 'spec_helper'
 
 describe DocumentsController do
   context 'As a user I can' do
