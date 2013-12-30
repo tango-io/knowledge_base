@@ -1,2 +1,7 @@
+before_script:
+  - bundle exec rake db:create db:migrate db:test:prepare
+
+script:
+  - bundle exec rspec spec/
 notifications:
   flowdock: b6611a2c5f312adf0d8e52b2bb745e46

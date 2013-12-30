@@ -16,8 +16,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'sdoc', group: :doc, require: false
 
-gem 'mongoid', github: 'tangosource/mongoid'
 gem 'haml-rails'
+
+gem 'pg'
 
 group :development do
   gem 'spring'
