@@ -1,6 +1,4 @@
 class DocumentsController < ApplicationController
-  before_filter :find_document, only: [:edit, :update, :show, :destroy]
-
   def new
     @document = Document.new
   end
@@ -9,16 +7,19 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    if document.save
-      redirect_to document
+    if @document.save
+      redirect_to @document
     else
       render :new
     end
   end
 
+  def edit
+  end
+
   def update
-    if document.save
-      redirect_to document
+    if @document.update_attributes(doc_params)
+      redirect_to(@document)
     else
       render :edit
     end
@@ -34,10 +35,6 @@ class DocumentsController < ApplicationController
   end
 
   private
-
-  def find_document
-    @document = Document.find(params[:id])
-  end
 
   def doc_params
     params.require(:document).permit(:title, :body, :tag_list)
