@@ -23,7 +23,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'guard-rspec', require: false
-  gem 'pry-rails'
 end
 
 group :test do
@@ -33,8 +32,8 @@ group :test do
   gem 'launchy'
   gem 'capybara-webkit'
   gem 'faker'
-  gem 'database_cleaner'
   gem 'headless'
   gem 'os'
+  gem 'pry-rails'
   gem 'shoulda-matchers'
 end
