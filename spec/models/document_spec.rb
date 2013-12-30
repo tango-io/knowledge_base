@@ -1,4 +1,4 @@
-include 'spec_helper'
+require 'spec_helper'
 
 describe Document do
   context 'Validations' do
