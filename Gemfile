@@ -21,7 +21,6 @@ group :development, :test do
   gem 'factory_girl'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'guard-rspec', require: false
-  gem 'faker'
 end
 
 group :test do
@@ -35,4 +34,5 @@ group :test do
   gem 'headless'
   gem 'os'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
