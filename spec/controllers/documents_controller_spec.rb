@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DocumentsController do
   context 'As a user I can' do
 
-    let!(document) { create :document }
+    let!(:document) { create(:document) }
 
     it 'create a document' do
       document = Document.new(body: Faker::Lorem.paragraphs)
