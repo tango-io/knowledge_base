@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'As a user I can edit a document' do
-  let!(document) { create :document }
-  let!(title) { Faker::Lorem.sentence }
-  let!(body)  { Faker::Lorem.paragraphs }
+  let!(:document) { create :document }
+  let!(:title) { Faker::Lorem.sentence }
+  let!(:body)  { Faker::Lorem.paragraphs }
 
   background { visit root_path }
 

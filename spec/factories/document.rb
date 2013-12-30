@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :document do
+  factory :document, class: 'Document' do
     title Faker::Lorem.sentence
     body  Faker::Lorem.paragraphs
   end
