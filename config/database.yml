@@ -1,0 +1,17 @@
+development: &common
+  adapter:        postgresql
+  database:       knowledge_base_development
+  pool:           5
+  user:           dev
+  password:       dev
+
+test:
+  <<: *common
+  database:       knowledge_base_test
+
+production:
+  <<: *common
+  database:       knowledge_base_production
+
+# The next file will override this file
+<%= IO.read("config/database.local.yml") if File.exists?("config/database.local.yml") %>

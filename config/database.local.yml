@@ -1,0 +1,10 @@
+development: &common
+  adapter:        postgresql
+  database:       knowledge_base_development
+  pool:           5
+  user:           dev
+  password:       dev
+
+test:
+  <<: *common
+  database:       knowledge_base_test
