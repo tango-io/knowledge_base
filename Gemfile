@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'sdoc', group: :doc, require: false
 gem 'haml-rails'
-gem 'decent_exposure'
 
 gem 'pg'
 gem 'omniauth-google-oauth2'
