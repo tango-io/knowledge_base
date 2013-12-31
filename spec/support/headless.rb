@@ -1,24 +1,41 @@
 RSpec.configure do |config|
+  @headless = Headless.new unless OS.mac?
 
-  def headless_config
+  config.before :each do
     unless OS.mac?
-      headless = Headless.new
-      headless.start
+      @headless.start
     end
   end
 
-  config.before :each do
-    headless_config
+  config.after :each do
+    unless OS.mac?
+      @headless.stop
+    end
   end
 
   config.before :each, :js do
     Capybara.current_driver = :webkit
-    headless_config
+    unless OS.mac?
+      @headless.start
+    end
+  end
+
+  config.after :each, :js do
+    unless OS.mac?
+      @headless.stop
+    end
   end
 
   config.before :each, :selenium do
     Capybara.current_driver = :selenium
-    headless_config
+    unless OS.mac?
+      @headless.start
+    end
   end
 
+  config.after :each, :selenium do
+    unless OS.mac?
+      @headless.stop
+    end
+  end
 end
