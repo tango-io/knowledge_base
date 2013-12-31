@@ -14,4 +14,4 @@
 .DS_Store
 
 # other files
-/config/google_credentials.yml
+/config/google_credentials.local.yml
