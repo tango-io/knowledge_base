@@ -7,3 +7,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     GOOGLE_CREDENTIALS['google_secret'],
   )
 end
+
+OmniAuth.config.test_mode = Rails.env.test?
