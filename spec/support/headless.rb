@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  @headless = Headless.new
+  @headless = Headless.new unless OS.mac?
 
   config.before :each do
     unless OS.mac?

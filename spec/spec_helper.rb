@@ -4,7 +4,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 
-Dir["#{::Rails.root}/spec/support/factories/**/*.rb"].each{ |file| load "#{file}" }
+Dir["#{::Rails.root}/spec/support/**/*.rb"].each{ |file| load "#{file}" }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 Capybara.javascript_driver = :webkit
