@@ -30,4 +30,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'headless'
+  gem 'os'
 end

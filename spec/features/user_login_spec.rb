@@ -8,7 +8,7 @@ def login_to_google(mock_options)
 end
 
 feature 'Oauth authentication' do
-  before{ visit root_path }
+  before { visit root_path }
 
   scenario 'user sees the login button with the right url' do
     expect(page.find_link('Sign in')[:href]).to eq('auth/google_oauth2')
