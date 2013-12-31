@@ -10,6 +10,6 @@ class PagesController < ApplicationController
   private
 
   def user_signed_in?
-    !session[:user_id].nil?
+    session[:user_id]
   end
 end
