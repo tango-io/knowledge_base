@@ -10,6 +10,6 @@
         = link_to "Knowledge Base"
     %ul.right
       %li.active
-        %img(src='none' style='width:30px; height: 30px; margin-top: 7px;')
+        %img(src="#{@user.image}" style='width:30px; height: 30px; margin-top: 7px;')
       %li
-        = link_to 'User Name', nil
+        = link_to @user.name, ''
