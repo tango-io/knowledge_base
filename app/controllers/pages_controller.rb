@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   def index
-    if user_signed_in?
-      @documents = Document.all
+    unless user_signed_in?
+      render template: 'pages/landing_page', layout: 'welcome'
     else
-      return render template: 'pages/landing_page', layout: 'welcome'
+      @documents = Document.all
     end
   end
 end
