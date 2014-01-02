@@ -13,6 +13,8 @@ gem 'haml-rails'
 gem 'pg'
 gem 'omniauth-google-oauth2'
 
+gem 'acts-as-taggable-on'
+
 group :development do
   gem 'spring'
 end
