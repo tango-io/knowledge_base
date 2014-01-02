@@ -6,24 +6,26 @@ describe DocumentsController do
     let!(:document) { create(:document) }
 
     it 'create a document' do
-      document = Document.new(body: Faker::Lorem.paragraphs)
-      post :create, document
+      sentence = Faker::Lorem.sentence
+      document = { title: sentence }
 
-      expect(response).to redirect_to(assigns(document))
-      expect(Document.count).to be_eq(1)
+      post :create, { document: document }
+
+      expect(response).to redirect_to(document_url(Document.last))
+      expect(Document.last.title).to eq(sentence)
     end
 
     it 'edit a document' do
-      new_body = Faker::Lorem.paragraphs
-      document.body = new_body
+      new_body = Faker::Lorem.paragraph
 
-      put :update, document
-      expect(document.body).to be_eq(new_body)
+      put :update, { id: document.id, document: { body: new_body } }
+      document.reload
+      expect(document.body).to include(new_body)
     end
 
     it 'see a document' do
-      get :show, document
-      expect(response).to have_content(document.body)
+      get :show, { id: document.id }
+      expect(response.request.fullpath).to eq(document_path(document))
     end
 
   end

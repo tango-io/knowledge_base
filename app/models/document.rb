@@ -1,7 +1,3 @@
-class Document
-  include Mongoid::Document
-  field :title
-  field :body
-
+class Document < ActiveRecord::Base
   validates_presence_of :title
 end

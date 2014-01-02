@@ -30,4 +30,5 @@ group :test do
   gem 'webrat'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'database_cleaner'
 end
