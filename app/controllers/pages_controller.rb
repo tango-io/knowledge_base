@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   end
 
   def user_signed_in?
-    true
+    false
   end
 end
