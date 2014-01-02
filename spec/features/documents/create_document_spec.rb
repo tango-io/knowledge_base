@@ -10,6 +10,7 @@ feature 'As a user I can create a document' do
 
   let!(:title) { Faker::Lorem.sentence }
   let!(:body)  { Faker::Lorem.paragraph }
+  let!(:tags)  { Faker::Lorem.words.join(',') }
   let!(:user) do
     create(
       :tango_user,
@@ -27,8 +28,10 @@ feature 'As a user I can create a document' do
     click_link('Create document')
     fill_in('document_title', with: title)
     fill_in('document_body', with: body)
+    fill_in('document_tag_list', with: tags)
     click_button('Save')
 
     expect(current_path).to eq(document_path(Document.first))
   end
+
 end
