@@ -6,7 +6,7 @@ feature 'As a user I can edit a document' do
   let!(:body)  { Faker::Lorem.paragraph }
 
   before do
-    allow(PagesController).to receive(:user_signed_in?).and_return(true)
+    allow_any_instance_of(PagesController).to receive(:user_signed_in?).and_return(true)
     visit root_path
   end
 
