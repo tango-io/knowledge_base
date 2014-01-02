@@ -37,4 +37,5 @@ group :test do
   gem 'pry-rails'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'database_cleaner'
 end
