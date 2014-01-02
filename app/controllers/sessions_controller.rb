@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       redirect_to root_path
+    else
+      redirect_to root_path, alert: 'It wasn\'t possible to log you in.'
     end
   end
 
@@ -17,10 +19,7 @@ class SessionsController < ApplicationController
     email = request.env['omniauth.auth']['info']['email']
 
     unless SessionsHandler.tango_email?(email)
-      render(
-        text: 'Only Tangosource emails are allowed.',
-        status: :unauthorized
-      )
+      redirect_to root_path, alert: 'Only TangoSource users are allowed.'
     end
   end
 end

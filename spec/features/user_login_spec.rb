@@ -14,24 +14,6 @@ feature 'Oauth authentication' do
     expect(page.find_link('Sign in')[:href]).to eq('auth/google_oauth2')
   end
 
-  context 'when clicking on the login button' do
-    before do
-      OmniAuth.config.add_mock(
-        :google_oauth2,
-        uid: rand(100),
-        info: {
-          email: Faker::Internet.email
-        }
-      )
-    end
-
-    scenario 'user is redirected to the omniauth url', :js do
-      click_link 'Sign in'
-
-      expect(current_path).to eq('/auth/google_oauth2/callback')
-    end
-  end
-
   context 'once the user has been authenticated through google ouath' do
     let!(:user){
       FactoryGirl.create(
@@ -42,7 +24,7 @@ feature 'Oauth authentication' do
     }
 
     before do
-      login_to_google(uid: user.uid, info: { email: user.email })
+      login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
     end
 
     scenario 'user sees her picture in the top bar' do
