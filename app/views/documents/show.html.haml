@@ -1,3 +1,5 @@
-= link_to "Improve this document", [:edit, @document]
-%h4= @document.title
-%p= @document.body
+.show-document
+  %h4.title= @document.title
+  %h4.url
+    = link_to "Improve this document", [:edit, @document]
+  %p.body= @document.body
