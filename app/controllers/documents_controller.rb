@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   before_filter :find_document, only: [:edit, :update, :show, :destroy]
 
   def new
-    @document = Document.new()
+    @document = Document.new
   end
 
   def show
