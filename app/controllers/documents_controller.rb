@@ -9,6 +9,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
+    @document = Document.new(doc_params)
     if @document.save
       redirect_to @document
     else
