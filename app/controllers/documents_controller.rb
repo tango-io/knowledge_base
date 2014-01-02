@@ -7,6 +7,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
+    @document = Document.new(doc_params)
     if @document.save
       redirect_to @document
     else
@@ -18,7 +19,7 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    if @document.update_attributes(doc_params)
+    if @document.update(doc_params)
       redirect_to(@document)
     else
       render :edit
@@ -34,7 +35,9 @@ class DocumentsController < ApplicationController
     end
   end
 
-  private
+  def find_document
+    @document = Document.find(params[:id])
+  end
 
   def doc_params
     params.require(:document).permit(:title, :body, :tag_list)

@@ -250,6 +250,7 @@ DEPENDENCIES
   minitest
   omniauth-google-oauth2
   os
+  minitest
   pg
   pry-rails
   rails (= 4.1.0.beta1)
