@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+    @documents = Document.all
     unless user_signed_in?
       return render template: 'pages/landing_page', layout: 'welcome'
     end

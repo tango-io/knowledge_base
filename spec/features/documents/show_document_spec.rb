@@ -3,7 +3,10 @@ require 'spec_helper'
 feature 'As a user I can see a document' do
   let!(:document) { create :document }
 
-  background { visit root_path }
+  before do
+    allow(PagesController).to receive(:user_signed_in?).and_return(true)
+    visit root_path
+  end
 
   scenario 'show document' do
     click_link(document.title)

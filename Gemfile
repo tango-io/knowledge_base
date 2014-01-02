@@ -36,4 +36,5 @@ group :test do
   gem 'os'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'database_cleaner'
 end

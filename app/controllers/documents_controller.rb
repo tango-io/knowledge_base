@@ -1,11 +1,15 @@
 class DocumentsController < ApplicationController
-  before_filter :build_document, only: [:new, :create]
-  before_filter :find_document, only: [:edit, :update]
+  before_filter :find_document, only: [:edit, :update, :show]
 
   def new
+    @document = Document.new()
+  end
+
+  def show
   end
 
   def create
+    @document = Document.new(doc_params)
     if @document.save
       redirect_to @document
     else
@@ -17,19 +21,17 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    if @document.update_attributes(doc_params)
+    if @document.update(doc_params)
       redirect_to(@document)
     else
       render :edit
     end
   end
 
-  def build_document
-    @document = document.new(doc_params)
-  end
+  private
 
   def find_document
-    @document = document.find(params[:id])
+    @document = Document.find(params[:id])
   end
 
   def doc_params

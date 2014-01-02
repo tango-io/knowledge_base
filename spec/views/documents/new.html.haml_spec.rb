@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe 'documents/new.html.haml' do
   before do
-    allow(DocumentsController).to receive(:new).and_return(true)
+    @document = Document.new
+    allow(DocumentsController).to receive(:new).and_return(@document)
     controller.request.path_parameters["action"] = "new"
   end
 
@@ -10,6 +11,6 @@ describe 'documents/new.html.haml' do
     render
 
     expect(rendered).to contain('New document')
-    expect(rendered).to contain('Save')
+    expect(rendered).to include('Save')
   end
 end
