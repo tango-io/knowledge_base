@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 def login_to_google(mock_options)
   OmniAuth.config.add_mock :google_oauth2, mock_options
 
@@ -16,7 +15,7 @@ feature 'Oauth authentication' do
 
   context 'once the user has been authenticated through google ouath' do
     let!(:user){
-      FactoryGirl.create(
+      create(
         :tango_user,
         image: Faker::Internet.url,
         name: Faker::Name.name

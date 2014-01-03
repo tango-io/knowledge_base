@@ -3,6 +3,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
+require 'faker'
 
 Dir["#{::Rails.root}/spec/support/**/*.rb"].each{ |file| load "#{file}" }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
@@ -16,7 +17,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
