@@ -1,7 +1,10 @@
 = form_for @document do |f|
   = f.text_field :title, placeholder: 'Document title'
   %input#document_tags{type: 'text', placeholder: 'Add tags (Comma separated)'}
-  = f.text_area :body
-  .preview
-    %p
-  = f.submit "Save"
+
+  #mwd-panel
+    #wmd-button-bar
+    %textarea#wmd-input.document_body(name='document[body]')
+
+  .preview#wmd-preview
+  = f.submit "Save", class: 'button', id: 'save'
