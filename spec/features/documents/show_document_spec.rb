@@ -6,8 +6,10 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-feature 'As a user I can see a document' do
-  let!(:document) { create :document }
+feature 'Document visualization' do
+  let(:sentence) { Faker::Lorem.sentence }
+  let(:markdown_h3) { '### ' + sentence }
+  let!(:document) { create :document, body: markdown_h3 }
   let!(:user) do
     create(
       :tango_user,
@@ -20,11 +22,11 @@ feature 'As a user I can see a document' do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
   end
 
-  scenario 'show document' do
+  scenario 'user sees a document', :js do
     within('.documents') do
       click_link(document.title)
     end
 
-    expect(page.body).to have_content(document.body)
+    find('h3', text: sentence)
   end
 end
