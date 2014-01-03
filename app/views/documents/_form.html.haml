@@ -4,7 +4,7 @@
 
   #mwd-panel
     #wmd-button-bar
-    %textarea#wmd-input.document_body(name='document[body]')
+    = f.text_area :body, id: 'wmd-input', class: 'document_body'
 
   .preview#wmd-preview
   = f.submit "Save", class: 'button', id: 'save'

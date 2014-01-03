@@ -1,2 +1,6 @@
+= content_for :extra_files do
+  = stylesheet_link_tag 'markdown_editor_menu'
+  = javascript_include_tag 'markdown_editor'
+
 %h2 Edit document
 = render partial: 'form'
