@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     if user_signed_in?
       @documents = get_documents
     else
-      @documents = Document.all
+      return render template: 'pages/landing_page', layout: 'welcome'
     end
   end
 

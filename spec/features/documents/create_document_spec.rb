@@ -7,8 +7,8 @@ def login_to_google(mock_options)
 end
 
 feature 'Article creation' do
-  let(:title) { Faker::Lorem.sentence }
-  let(:body) { Faker::Lorem.paragraph }
+  let!(:title) { Faker::Lorem.sentence }
+  let!(:body) { Faker::Lorem.paragraph }
   let(:sentence) { Faker::Lorem.sentence }
   let!(:tags)  { Faker::Lorem.words.join(',') }
   let!(:user) do

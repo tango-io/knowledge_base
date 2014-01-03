@@ -20,6 +20,7 @@ feature 'Document visualization' do
 
   before do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
+    visit root_path
   end
 
   scenario 'user sees a document', :js do
