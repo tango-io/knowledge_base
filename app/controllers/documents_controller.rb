@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  before_filter :find_document, only: [:edit, :update, :show, :destroy]
+
   def new
     @document = Document.new
   end
@@ -41,4 +43,7 @@ class DocumentsController < ApplicationController
     params.require(:document).permit(:title, :body, :tag_list)
   end
 
+  def find_document
+    @document = Document.find(params[:id])
+  end
 end

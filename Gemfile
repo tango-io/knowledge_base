@@ -37,9 +37,4 @@ group :test do
   gem 'headless'
   gem 'os'
   gem 'shoulda-matchers'
-  gem 'pry-rails'
-  gem 'shoulda-matchers'
-  gem 'faker'
-  gem 'database_cleaner'
-  gem 'launchy'
 end
