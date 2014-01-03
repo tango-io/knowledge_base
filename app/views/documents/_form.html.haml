@@ -1,10 +1,17 @@
 = form_for @document do |f|
-  = f.text_field :title, placeholder: 'Document title'
-  = f.text_field :tag_list, placeholder: 'Add tags (Comma separated)'
-
-  #mwd-panel
-    #wmd-button-bar
-    = f.text_area :body, id: 'wmd-input', class: 'document_body'
-
-  .preview#wmd-preview
-  = f.submit "Save", class: 'button radius', id: 'save'
+  .row
+    .large-12.columns
+      = f.text_field :title, placeholder: 'Document title'
+  .row
+    .large-6.columns
+      #mwd-panel
+        #wmd-button-bar
+        = f.text_area :body, id: 'wmd-input', class: 'document_body'
+    .large-6.columns
+      .preview#wmd-preview
+  .row
+    .large-12.columns
+      = f.text_field :tag_list, placeholder: 'Add tags (Comma separated)'
+  .row
+    .large-2.columns.left
+      = f.submit "Save", class: 'button', id: 'save'
