@@ -2,9 +2,4 @@
 %br
 
 = link_to "Create Document", new_document_path, class: 'button'
-=form_tag root_path, :method => 'get' do
-  =text_field_tag :search, params[:search]
-  = submit_tag "Search", :name => nil
-.documents
-  %ul
-    = render @documents
+= render partial: '/search/search'

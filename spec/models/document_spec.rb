@@ -7,10 +7,10 @@ describe Document do
 
   context 'Methods' do
     let!(:document) { create :document }
-    it 'search_by_title' do
+    it 'search' do
       title = Faker::Lorem.sentence
       document2 = create(:document, title: title)
-      expect(Document.search_by_title(title)).to include(document2)
+      expect(Document.search(title)).to include(document2)
     end
   end
 

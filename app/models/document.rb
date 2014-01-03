@@ -3,7 +3,5 @@ class Document < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tag_list
 
-  def self.search_by_title title
-    Document.where('title LIKE ?', "%#{title}%")
-  end
+  scope :search, -> q { where('title ILIKE ?', "%#{q}%") }
 end
