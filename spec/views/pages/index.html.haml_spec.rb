@@ -1,9 +1,10 @@
 
 require 'spec_helper'
 
-describe 'pages/landing_page.html.haml' do
+describe 'pages/index.html.haml' do
   before do
-    allow(PagesController).to receive(:index).and_return(true)
+    @documents = Document.all
+    allow(PagesController).to receive(:index).and_return(@documents)
     controller.request.path_parameters["action"] = "index"
   end
 

@@ -9,8 +9,8 @@ describe Document do
     let!(:document) { create :document }
     it 'search_by_title' do
       title = Faker::Lorem.sentence
-      document2 = create(:document, title)
-      expect(Document.search_by_title).to include(document2)
+      document2 = create(:document, title: title)
+      expect(Document.search_by_title(title)).to include(document2)
     end
   end
 
