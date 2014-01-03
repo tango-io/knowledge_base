@@ -3,7 +3,9 @@ require 'spec_helper'
 describe PagesController, 'index template' do
 
   context 'if there is no user session active' do
-    before { get :index }
+    before do
+      get :index
+    end
 
     it 'renders the landing_page view' do
       expect(response).to render_template('landing_page')

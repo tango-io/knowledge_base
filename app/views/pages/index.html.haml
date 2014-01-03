@@ -1,1 +1,9 @@
-%h1 Welcome!
+%h2 List of documents
+%br
+
+.documents
+  = render @documents
+
+%br
+%br
+= link_to "Create Document", new_document_path, class: 'button'
