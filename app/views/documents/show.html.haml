@@ -1,3 +1,16 @@
-= link_to "Improve this document", [:edit, @document]
-%h4= @document.title
-%p= @document.body
+= content_for :extra_files do
+  = javascript_include_tag 'markdown_editor'
+
+#markdown-helper-controls
+  #mwd-panel
+    #wmd-button-bar
+    %textarea#wmd-input= @document.body
+
+.show-document
+  %h4.url
+    = link_to 'Improve this document', [:edit, @document]
+
+  %h4.title= @document.title
+  %hr
+
+  %p.body#wmd-preview
