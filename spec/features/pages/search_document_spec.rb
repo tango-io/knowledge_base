@@ -1,16 +1,29 @@
 require 'spec_helper'
 
-feature 'As a user I can' do
+def login_to_google(mock_options)
+  OmniAuth.config.add_mock :google_oauth2, mock_options
+
+  visit '/auth/google_oauth2'
+end
+
+feature 'Search documents' do
   let!(:title) { Faker::Lorem.sentence }
   let!(:document) { create :document, title: title }
   let!(:document2) { create :document }
+  let!(:user) do
+    create(
+      :tango_user,
+      image: Faker::Internet.url,
+      name: Faker::Name.name
+    )
+  end
 
   before do
-    allow_any_instance_of(PagesController).to receive(:user_signed_in?).and_return(true)
+    login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
     visit root_path
   end
 
-  scenario 'search a document' do
+  scenario 'As a user I can search a document' do
     fill_in('search', with: title)
     click_button('Search')
 
