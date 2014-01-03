@@ -6,10 +6,10 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-feature 'As a user I can create a document' do
-
-  let!(:title) { Faker::Lorem.sentence }
-  let!(:body)  { Faker::Lorem.paragraph }
+feature 'Article creation' do
+  let(:title) { Faker::Lorem.sentence }
+  let(:body) { Faker::Lorem.paragraph }
+  let(:sentence) { Faker::Lorem.sentence }
   let!(:user) do
     create(
       :tango_user,
@@ -21,14 +21,24 @@ feature 'As a user I can create a document' do
   before do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
     visit root_path
+
+    click_link('Create Document')
   end
 
-  scenario 'create document' do
-    click_link('Create document')
+  scenario 'user saves a new document to the database' do
     fill_in('document_title', with: title)
-    fill_in('document_body', with: body)
+    fill_in('wmd-input', with: body)
     click_button('Save')
 
     expect(current_path).to eq(document_path(Document.first))
+  end
+
+  context 'when the user enters some markdown text as the article body' do
+    scenario 'the article body is transformed to html in real time', :js do
+      markdown_h3 = '### ' + sentence
+
+      fill_in('wmd-input', with:  markdown_h3)
+      find('h3', text: sentence)
+    end
   end
 end
