@@ -6,10 +6,11 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-feature 'As a user I can edit a document' do
+feature 'Article edition' do
   let!(:document) { create :document }
-  let!(:title) { Faker::Lorem.sentence }
-  let!(:body)  { Faker::Lorem.paragraph }
+  let(:title) { Faker::Lorem.sentence }
+  let(:body) { Faker::Lorem.paragraph }
+  let(:sentence) { Faker::Lorem.sentence }
   let!(:tags)  { Faker::Lorem.words.join(',') }
   let!(:user) do
     create(
@@ -22,13 +23,14 @@ feature 'As a user I can edit a document' do
   before do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
     visit root_path
-  end
 
-  scenario 'edit document' do
     click_link(document.title)
     click_link('Improve this document')
+  end
+
+  scenario 'user edits and saves a document' do
     fill_in('document_title', with: title)
-    fill_in('document_body', with: body)
+    fill_in('wmd-input', with: body)
     fill_in('document_tag_list', with: tags)
     click_button('Save')
 
@@ -37,5 +39,14 @@ feature 'As a user I can edit a document' do
     expect(document.body).to  eq(body)
     expect(document.tag_list.join(',')).to  eq(tags)
     expect(current_path).to eq(document_path(document))
+  end
+
+  context 'when the user enters some markdown text as the article body' do
+    scenario 'the article body is transformed to html in real time', :js do
+      markdown_h3 = '### ' + sentence
+
+      fill_in('wmd-input', with:  markdown_h3)
+      find('h3', text: sentence)
+    end
   end
 end

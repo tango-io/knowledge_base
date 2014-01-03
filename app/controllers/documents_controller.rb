@@ -39,12 +39,11 @@ class DocumentsController < ApplicationController
 
   private
 
-  def find_document
-    @document = Document.find(params[:id])
-  end
-
   def doc_params
     params.require(:document).permit(:title, :body, :tag_list)
   end
 
+  def find_document
+    @document = Document.find(params[:id])
+  end
 end
