@@ -55,11 +55,4 @@ ActiveRecord::Schema.define(version: 20140102160552) do
 
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
-  create_table "documents", force: true do |t|
-    t.text     "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
