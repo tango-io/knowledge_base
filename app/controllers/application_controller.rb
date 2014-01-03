@@ -2,10 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :get_user
 
-  decent_configuration do
-    strategy DecentExposure::StrongParametersStrategy
-  end
-
   private
 
   def get_user
