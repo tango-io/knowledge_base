@@ -1,9 +1,9 @@
 %h2 List of documents
 %br
 
-.documents
-  = render @documents
-
-%br
-%br
 = link_to "Create Document", new_document_path, class: 'button'
+  =form_tag root_path, :method => 'get' do
+    =text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+  %ul
+    = render @documents
