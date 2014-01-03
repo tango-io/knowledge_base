@@ -235,7 +235,6 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails (~> 4.0.0)
   database_cleaner
-  factory_girl
   factory_girl_rails
   faker
   guard-rspec
@@ -244,9 +243,9 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  minitest
   omniauth-google-oauth2
   os
-  minitest
   pg
   pry-rails
   rails (= 4.1.0.beta1)

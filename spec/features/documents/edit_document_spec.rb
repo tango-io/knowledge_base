@@ -1,12 +1,26 @@
 require 'spec_helper'
 
+def login_to_google(mock_options)
+  OmniAuth.config.add_mock :google_oauth2, mock_options
+
+  visit '/auth/google_oauth2'
+end
+
+
 feature 'As a user I can edit a document' do
   let!(:document) { create :document }
   let!(:title) { Faker::Lorem.sentence }
   let!(:body)  { Faker::Lorem.paragraph }
+  let!(:user) do
+    create(
+      :tango_user,
+      image: Faker::Internet.url,
+      name: Faker::Name.name
+    )
+  end
 
   before do
-    allow_any_instance_of(PagesController).to receive(:user_signed_in?).and_return(true)
+    login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
     visit root_path
   end
 

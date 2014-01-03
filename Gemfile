@@ -15,7 +15,6 @@ gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'spring'
-  gem 'pry-rails'
 end
 
 group :development, :test do
@@ -38,4 +37,5 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'pry-rails'
 end
