@@ -1,9 +1,15 @@
 require 'spec_helper'
 
 describe PagesController, 'index template' do
+  before do
+    allow(User).to receive(:find).and_return(nil)
+  end
 
   context 'if there is no user session active' do
-    before { get :index }
+    before do
+      session[:user_id] = nil
+      get :index
+    end
 
     it 'renders the landing_page view' do
       expect(response).to render_template('landing_page')
@@ -16,7 +22,7 @@ describe PagesController, 'index template' do
 
   context 'if there is a user session active' do
     before do
-      allow(controller).to receive(:user_signed_in?).and_return(true)
+      session[:user_id] = rand(100)
       get :index
     end
 
@@ -28,5 +34,4 @@ describe PagesController, 'index template' do
       expect(response).to render_template(layout: 'application')
     end
   end
-
 end
