@@ -1,19 +1,20 @@
 require 'spec_helper'
 
-feature 'As a user I can see a document' do
-  let!(:document) { create :document }
+feature 'Document visualization' do
+  let(:sentence) { Faker::Lorem.sentence }
+  let(:markdown_h3) { '### ' + sentence }
+  let!(:document) { create :document, body: markdown_h3 }
 
   before do
-    @documents = Document.all
     allow_any_instance_of(PagesController).to receive(:user_signed_in?).and_return(true)
     visit root_path
   end
 
-  scenario 'show document' do
+  scenario 'user sees a document', :js do
     within('.documents') do
       click_link(document.title)
     end
 
-    expect(page.body).to have_content(document.body)
+    find('h3', text: sentence)
   end
 end
