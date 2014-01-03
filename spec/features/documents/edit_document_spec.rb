@@ -11,7 +11,7 @@ feature 'Article edition' do
   let(:title) { Faker::Lorem.sentence }
   let(:body) { Faker::Lorem.paragraph }
   let(:sentence) { Faker::Lorem.sentence }
-  let!(:tags)  { Faker::Lorem.words.join(',') }
+  let!(:tags)  { Faker::Lorem.words }
   let!(:user) do
     create(
       :tango_user,
@@ -31,13 +31,13 @@ feature 'Article edition' do
   scenario 'user edits and saves a document' do
     fill_in('document_title', with: title)
     fill_in('wmd-input', with: body)
-    fill_in('document_tag_list', with: tags)
+    fill_in('document_tag_list', with: tags.join(','))
     click_button('Save')
 
     document.reload
     expect(document.title).to eq(title)
     expect(document.body).to  eq(body)
-    expect(document.tag_list.join(',')).to  eq(tags)
+    expect(document.tag_list.uniq.sort).to  eq(tags.uniq.sort)
     expect(current_path).to eq(document_path(document))
   end
 
