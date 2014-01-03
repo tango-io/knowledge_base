@@ -107,26 +107,26 @@ else
 
     Markdown.Converter = function () {
         var pluginHooks = this.hooks = new HookCollection();
-        
+
         // given a URL that was encountered by itself (without markup), should return the link text that's to be given to this link
         pluginHooks.addNoop("plainLinkText");
-        
+
         // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
         pluginHooks.addNoop("preConversion");
-        
+
         // called with the text once all normalizations have been completed (tabs to spaces, line endings, etc.), but before any conversions have
         pluginHooks.addNoop("postNormalization");
-        
+
         // Called with the text before / after creating block elements like code blocks and lists. Note that this is called recursively
         // with inner content, e.g. it's called with the full text, and then only with the content of a blockquote. The inner
         // call will receive outdented text.
         pluginHooks.addNoop("preBlockGamut");
         pluginHooks.addNoop("postBlockGamut");
-        
+
         // called with the text of a single block element before / after the span-level conversions (bold, code spans, etc.) have been made
         pluginHooks.addNoop("preSpanGamut");
         pluginHooks.addNoop("postSpanGamut");
-        
+
         // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
         pluginHooks.addNoop("postConversion");
 
@@ -156,7 +156,7 @@ else
             // Don't do that.
             if (g_urls)
                 throw new Error("Recursive call to converter.makeHtml");
-        
+
             // Create the private state objects.
             g_urls = new SaveHash();
             g_titles = new SaveHash();
@@ -191,7 +191,7 @@ else
             // match consecutive blank lines with /\n+/ instead of something
             // contorted like /[ \t]*\n+/ .
             text = text.replace(/^[ \t]+$/mg, "");
-            
+
             text = pluginHooks.postNormalization(text);
 
             // Turn block-level HTML blocks into hash entries
