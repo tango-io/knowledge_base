@@ -6,11 +6,11 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-
 feature 'As a user I can edit a document' do
   let!(:document) { create :document }
   let!(:title) { Faker::Lorem.sentence }
   let!(:body)  { Faker::Lorem.paragraph }
+  let!(:tags)  { Faker::Lorem.words.join(',') }
   let!(:user) do
     create(
       :tango_user,
@@ -29,11 +29,13 @@ feature 'As a user I can edit a document' do
     click_link('Improve this document')
     fill_in('document_title', with: title)
     fill_in('document_body', with: body)
+    fill_in('document_tag_list', with: tags)
     click_button('Save')
 
     document.reload
     expect(document.title).to eq(title)
     expect(document.body).to  eq(body)
+    expect(document.tag_list.join(',')).to  eq(tags)
     expect(current_path).to eq(document_path(document))
   end
 end

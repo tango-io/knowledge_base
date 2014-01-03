@@ -4,23 +4,31 @@ describe DocumentsController do
   context 'As a user I can' do
 
     let!(:document) { create(:document) }
+    let!(:title) { Faker::Lorem.sentence }
+    let!(:body)  { Faker::Lorem.paragraph }
+    let!(:tags)  { Faker::Lorem.words.join(',') }
 
     it 'create a document' do
-      sentence = Faker::Lorem.sentence
-      document = { title: sentence }
+      document = { 
+        title: title,
+        body: body,
+        tag_list: tags
+      }
 
       post :create, { document: document }
 
-      expect(response).to redirect_to(document_url(Document.last))
-      expect(Document.last.title).to eq(sentence)
+      document = Document.last
+      expect(response).to redirect_to(document_url(document))
+      expect(document.title).to eq(title)
+      expect(document.body).to eq(body)
+      expect(document.tag_list.join(',')).to eq(tags)
     end
 
     it 'edit a document' do
-      new_body = Faker::Lorem.paragraph
-
-      put :update, { id: document.id, document: { body: new_body } }
+      put :update, { id: document.id, document: { body: body, tag_list: tags } }
       document.reload
-      expect(document.body).to include(new_body)
+      expect(document.body).to include(body)
+      expect(document.tag_list.join(',')).to include(tags)
     end
 
     it 'see a document' do

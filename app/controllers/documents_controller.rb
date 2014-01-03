@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   before_filter :find_document, only: [:edit, :update, :show, :destroy]
 
   def new
-    @document = Document.new()
+    @document = Document.new
   end
 
   def show
@@ -44,7 +44,7 @@ class DocumentsController < ApplicationController
   end
 
   def doc_params
-    params.require(:document).permit(:title, :body)
+    params.require(:document).permit(:title, :body, :tag_list)
   end
 
 end
