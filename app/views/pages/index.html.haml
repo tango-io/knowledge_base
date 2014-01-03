@@ -1,5 +1,28 @@
-%h2 List of documents
-%br
+:css
+  .document-search{
+    margin-top: 5em !important;
+  }
 
-= link_to "Create Document", new_document_path, class: 'button'
-= render partial: '/search/search'
+.document-search.row
+  = form_tag search_index_path, :method => 'get', class: 'column large-9' do
+    = text_field_tag :search, params[:search], placeholder: 'Search document'
+    = submit_tag "Search", :name => nil
+
+  .existent-tags-list.column.large-3
+    %p Tags
+    %ul
+      %li Ruby
+      %li CSS
+      %li Javascript
+      %li Scrum
+
+.row
+  .column.large-6
+    %h2 Recent documents
+    = render @documents
+
+  .column.large-6
+    %h2 Popular tags
+
+%br
+%br
