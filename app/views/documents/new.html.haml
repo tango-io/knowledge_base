@@ -1,2 +1,9 @@
+= content_for :extra_files do
+  = stylesheet_link_tag 'pagedown.editor'
+
+  = javascript_include_tag 'pagedown/Markdown.Converter'
+  = javascript_include_tag 'pagedown/Markdown.Sanitizer'
+  = javascript_include_tag 'pagedown/Markdown.Editor'
+
 %h2 New document
 = render partial: 'form'

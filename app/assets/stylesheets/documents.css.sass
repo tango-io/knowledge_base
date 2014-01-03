@@ -1,25 +1,37 @@
 .container
   form
-    #document_title, #document_body
+    padding-top: 1px
+
+    #document_title, .document_body
       float: left
       width: 49%
     #document_tag_list, .preview
       float: right
       width: 49%
-    #document_body, .preview
+
+    #mwd-panel
+      margin-top: 4em
+
+    .document_body, .preview
       min-height: 200px
-    #document_body
+
+    .document_body
       resize: none
       margin-bottom: 0
+
     .preview
       border: 2px solid
+      padding: 4px
+
     #save
       margin-top: 10px
 
 .show-document
   .title, .body
     float: left
+
   .body
     width: 100%
+
   .url
     float: right
