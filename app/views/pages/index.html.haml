@@ -2,4 +2,8 @@
 = link_to "Create document", new_document_path
 %br
 .documents
-  = render @documents
+  =form_tag root_path, :method => 'get' do
+    =text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+  %ul
+    = render @documents
