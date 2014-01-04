@@ -4,6 +4,7 @@ class Document < ActiveRecord::Base
   acts_as_taggable_on :tag_list
 
   scope :search, -> q { where('title ILIKE ?', "%#{q}%") }
+  scope :recent_ones, -> { order('created_at DESC').limit(10) }
 
   class << self
     def tags

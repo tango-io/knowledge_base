@@ -6,16 +6,10 @@ def login_to_google(mock_options)
 end
 
 feature 'Document visualization' do
-  let(:sentence) { Faker::Lorem.sentence }
-  let(:markdown_h3) { '### ' + sentence }
-  let!(:document) { create :document, body: markdown_h3 }
-  let!(:user) do
-    create(
-      :tango_user,
-      image: Faker::Internet.url,
-      name: Faker::Name.name
-    )
-  end
+  let(:sentence){ Faker::Lorem.sentence }
+  let(:markdown_h3){ '### ' + sentence }
+  let!(:document){ create :document, body: markdown_h3 }
+  let!(:user){ create :tango_user }
 
   before do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})

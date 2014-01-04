@@ -2,12 +2,12 @@
   %ul.title-area
     %li.name
       %h1
-        = link_to '/' do
+        = link_to root_path do
           = image_tag 'tangosource.png'
   %section.top-bar-section
     %ul.left
       %li
-        = link_to "Knowledge Base"
+        = link_to "Knowledge Base", root_path
     %ul.right
       %li.active
         %img(src="#{@user.image}" style='width:30px; height: 30px; margin-top: 7px;')
