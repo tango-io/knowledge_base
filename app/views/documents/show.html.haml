@@ -1,16 +1,25 @@
 = content_for :extra_files do
   = javascript_include_tag 'markdown_editor'
 
-#markdown-helper-controls
+%br
+%br
+
+#markdown-helper-controls.hide
   #mwd-panel
     #wmd-button-bar
     %textarea#wmd-input= @document.body
 
 .show-document
-  %h4.url
-    = link_to 'Improve this document', [:edit, @document]
+  .row
+    .column.large-6
+      %h4.title= @document.title
 
-  %h4.title= @document.title
+    .column.large-6.text-right
+      %h4.url
+        = link_to 'Improve this document', [:edit, @document]
+
   %hr
 
-  %p.body#wmd-preview
+  .row
+    .column
+      %p.body#wmd-preview
