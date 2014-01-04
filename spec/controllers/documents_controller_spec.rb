@@ -6,13 +6,13 @@ describe DocumentsController do
     let!(:document) { create(:document) }
     let!(:title) { Faker::Lorem.sentence }
     let!(:body)  { Faker::Lorem.paragraph }
-    let!(:tags)  { Faker::Lorem.words.join(',') }
+    let!(:tags)  { Faker::Lorem.words }
 
     it 'create a document' do
-      document = { 
+      document = {
         title: title,
         body: body,
-        tag_list: tags
+        tag_list: tags.join(',')
       }
 
       post :create, { document: document }
@@ -21,14 +21,14 @@ describe DocumentsController do
       expect(response).to redirect_to(document_url(document))
       expect(document.title).to eq(title)
       expect(document.body).to eq(body)
-      expect(document.tag_list.join(',')).to eq(tags)
+      expect(document.tag_list.uniq.sort).to eq(tags.uniq.sort)
     end
 
     it 'edit a document' do
-      put :update, { id: document.id, document: { body: body, tag_list: tags } }
+      put :update, { id: document.id, document: { body: body, tag_list: tags.join(',') } }
       document.reload
       expect(document.body).to include(body)
-      expect(document.tag_list.join(',')).to include(tags)
+      expect(document.tag_list.uniq.sort).to eq(tags.uniq.sort)
     end
 
     it 'see a document' do
