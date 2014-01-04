@@ -1,7 +1,20 @@
 %br
-=form_tag search_index_path, :method => 'get' do
-  =text_field_tag :search, params[:search]
-  = submit_tag "Search", :name => nil
+
+.row
+  .column.large-7
+    = form_tag search_index_path, method: 'get' do
+      .has-form
+        .row.collapse
+          .large-10.column
+            = text_field_tag :search, params[:search], placeholder: 'Search document'
+
+          .large-2.column
+            %input.button.postfix(type='submit' value='Search')
+
+        .row
+          .column
+            %h5.subheader Search: #{params[:search]}, results: #{@documents.count}
+
 .documents
-  %ul
+  %ul.disc
     = render @documents

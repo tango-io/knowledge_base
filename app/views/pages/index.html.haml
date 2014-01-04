@@ -5,10 +5,12 @@
   = form_tag search_index_path, method: 'get', class: 'column large-9' do
     .has-form
       .row.collapse
+
         .large-10.columns
           = text_field_tag :search, params[:search], placeholder: 'Search document'
+
         .large-2.columns
-          %input.button.postfix(type='submit')
+          %input.button.postfix(type='submit' value='Search')
 
     = link_to 'Create document', new_document_path, class: 'button radius'
 
