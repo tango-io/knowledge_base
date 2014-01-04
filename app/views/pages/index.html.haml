@@ -36,4 +36,4 @@
     %dl.sub-nav
       - @popular_tags.each do |tag|
         %dd.active
-          = link_to tag, search_index_path(tag: tag)
+          = link_to tag, search_index_path(tag: tag.name)
