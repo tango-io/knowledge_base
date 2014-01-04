@@ -12,7 +12,7 @@
         .large-2.columns
           %input.button.postfix(type='submit' value='Search')
 
-    = link_to 'Create document', new_document_path, class: 'button radius'
+    = link_to 'Create Document', new_document_path, class: 'button radius'
 
 
   .existent-tags-list.column.large-3
@@ -30,7 +30,7 @@
   .column.large-6
     %h2 Recent documents
 
-    %ul.disc
+    %ul.documents.disc
       = render @documents
 
   .pupular-tags.column.large-6
