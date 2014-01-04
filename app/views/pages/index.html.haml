@@ -1,28 +1,41 @@
-:css
-  .document-search{
-    margin-top: 5em !important;
-  }
+= content_for :extra_files do
+  = stylesheet_link_tag 'pages/index'
 
 .document-search.row
-  = form_tag search_index_path, :method => 'get', class: 'column large-9' do
-    = text_field_tag :search, params[:search], placeholder: 'Search document'
-    = submit_tag "Search", :name => nil
+  = form_tag search_index_path, method: 'get', class: 'column large-9' do
+    .has-form
+      .row.collapse
+        .large-10.columns
+          = text_field_tag :search, params[:search], placeholder: 'Search document'
+        .large-2.columns
+          %input.button.postfix(type='submit')
+
+    = link_to 'Create document', new_document_path, class: 'button radius'
+
 
   .existent-tags-list.column.large-3
-    %p Tags
-    %ul
-      %li Ruby
-      %li CSS
-      %li Javascript
-      %li Scrum
+    %h6.subheader Tags
+
+    %dl.sub-nav
+      %dd.active
+        %a{href: "#"} Ruby
+      %dd.active
+        %a{href: "#"} Javascript
+      %dd.active
+        %a{href: "#"} Rails
 
 .row
   .column.large-6
     %h2 Recent documents
-    = render @documents
 
-  .column.large-6
+    %ul.disc
+      = render @documents
+
+  .pupular-tags.column.large-6
     %h2 Popular tags
 
-%br
-%br
+    %dl.sub-nav
+      %dd.active
+        %a{href: "#"} Ruby
+      %dd.active
+        %a{href: "#"} Javascript
