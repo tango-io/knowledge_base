@@ -4,4 +4,12 @@ class Document < ActiveRecord::Base
   acts_as_taggable_on :tag_list
 
   scope :search, -> q { where('title ILIKE ?', "%#{q}%") }
+
+  class << self
+    def tags
+      tag_counts.map do |tag|
+        tag.name
+      end
+    end
+  end
 end
