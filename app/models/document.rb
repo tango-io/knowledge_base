@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
       end
     end
 
-    popular_tags
+    def popular_tags
       tag_counts_on(:tags, limit: 10, order: 'count desc')
     end
   end

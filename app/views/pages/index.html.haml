@@ -34,4 +34,6 @@
     %h2 Popular tags
 
     %dl.sub-nav
-      =render partial: 'tag', collection: @popular_tags, as: :tag
+      - @popular_tags.each do |tag|
+        %dd.active
+          = link_to tag, search_index_path(tag: tag)

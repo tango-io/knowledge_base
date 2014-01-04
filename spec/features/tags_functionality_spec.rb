@@ -21,14 +21,7 @@ end
 feature 'Tags functionality' do
   context 'at the home page' do
     let!(:popular_tags) { Document.popular_tags }
-
-    let!(:user) do
-      create(
-        :tango_user,
-        image: Faker::Internet.url,
-        name: Faker::Name.name
-      )
-    end
+    let!(:user){ create :tango_user }
 
     before do
       create_popular_tags
