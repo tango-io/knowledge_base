@@ -1,6 +1,10 @@
 require 'spec_helper'
 
-describe PagesController, 'index template' do
+def login_user
+  allow(controller).to receive(:user_signed_in?).and_return(true)
+end
+
+describe PagesController, '#index' do
   before do
     allow(User).to receive(:find).and_return(nil)
   end
@@ -22,7 +26,7 @@ describe PagesController, 'index template' do
 
   context 'if there is a user session active' do
     before do
-      session[:user_id] = rand(100)
+      login_user
       get :index
     end
 
@@ -35,19 +39,17 @@ describe PagesController, 'index template' do
     end
   end
 
-  context 'When there\'s a search param' do
-    let!(:title) { Faker::Lorem.sentence }
-    let!(:document) { create(:document, title: title) }
-    let!(:document2) { create(:document) }
+  describe 'Tags' do
+    let(:tag){ Faker::Lorem.word }
+    let!(:document){ create(:document, tag_list: tag)}
 
     before do
-      allow(controller).to receive(:user_signed_in?).and_return(true)
+      login_user
+      get :index
     end
 
-    it 'respond with filtered documents' do
-      pending #I don't know how to test it, but it works
-      get :index, { search: title}
-      response
+    it 'assigns the tags' do
+      expect(assigns(:tags)).to eq([tag])
     end
   end
 end
