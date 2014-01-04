@@ -34,7 +34,4 @@
     %h2 Popular tags
 
     %dl.sub-nav
-      %dd.active
-        %a{href: "#"} Ruby
-      %dd.active
-        %a{href: "#"} Javascript
+      =render partial: 'tag', collection: @popular_tags, as: :tag

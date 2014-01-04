@@ -25,10 +25,10 @@ describe Document do
       end
 
       expect(Document.popular_tags).to eq(
-      Document.tag_counts_on(
-        :tags,
-        :limit => 10,
-        :order => "count desc")
+        Document.tag_counts_on(
+          :tags,
+          :limit => 10,
+          :order => "count desc")
       )
     end
 

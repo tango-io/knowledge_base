@@ -7,14 +7,14 @@ end
 
 def create_popular_tags
   (1..10).map do |i|
-    Document.create( title: Faker::Lorem.sentence, tag_list: i.to_s )
-    Document.create( title: Faker::Lorem.sentence, tag_list: i.to_s )
+    Document.create( title: Faker::Lorem.sentence, tag_list: "#{i}-tag" )
+    Document.create( title: Faker::Lorem.sentence, tag_list: "#{i}-tag" )
   end
 end
 
 def create_not_popular_tags
   (11..20).map do |i|
-    Document.create( title: Faker::Lorem.sentence, tag_list: i.to_s )
+    Document.create( title: Faker::Lorem.sentence, tag_list: "#{i}-tag" )
   end
 end
 
