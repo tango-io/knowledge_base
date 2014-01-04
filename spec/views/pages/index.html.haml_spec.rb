@@ -1,16 +1,24 @@
-
 require 'spec_helper'
 
 describe 'pages/index.html.haml' do
+  let(:tags){ Faker::Lorem.words(3) }
+
   before do
-    @documents = Document.all
-    allow(PagesController).to receive(:index).and_return(@documents)
-    controller.request.path_parameters["action"] = "index"
+    assign(:documents, stub_model(Document))
+    assign(:tags, tags)
+
+    render
   end
 
-  it 'displays info' do
-    render
+  it 'displays the search button' do
+    expect(rendered).to include('Search') # for some reason the 'Search' button
+                                          # isn't visible there, so I had to use
+                                          # 'include'
+  end
 
-    expect(rendered).to include('Search')
+  it 'displays the tags' do
+    tags.each do |tag|
+      expect(rendered).to contain(tag)
+    end
   end
 end

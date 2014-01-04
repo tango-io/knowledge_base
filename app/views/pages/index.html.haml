@@ -19,12 +19,9 @@
     %h6.subheader Tags
 
     %dl.sub-nav
-      %dd.active
-        %a{href: "#"} Ruby
-      %dd.active
-        %a{href: "#"} Javascript
-      %dd.active
-        %a{href: "#"} Rails
+      - @tags.each do |tag|
+        %dd.active
+          = link_to tag, search_index_path(tag: tag)
 
 .row
   .column.large-6
