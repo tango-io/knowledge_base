@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe 'pages/index.html.haml' do
-  let(:tags){ Faker::Lorem.words(3) }
+  let(:tags)         { Faker::Lorem.words(3)               }
+  let(:popular_tags) { tags.map { |tag| double(name: tag) } }
 
   before do
     assign(:documents, stub_model(Document))
-    assign(:popular_tags, tags)
+    assign(:popular_tags, popular_tags)
     assign(:tags, tags)
 
     render
