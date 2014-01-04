@@ -1,9 +1,43 @@
-%h2 List of documents
-%br
+= content_for :extra_files do
+  = stylesheet_link_tag 'pages/index'
 
-.documents
-  = render @documents
+.document-search.row
+  = form_tag search_index_path, method: 'get', class: 'column large-9' do
+    .has-form
+      .row.collapse
 
-%br
-%br
-= link_to "Create Document", new_document_path, class: 'button'
+        .large-10.columns
+          = text_field_tag :search, params[:search], placeholder: 'Search document'
+
+        .large-2.columns
+          %input.button.postfix(type='submit' value='Search')
+
+    = link_to 'Create Document', new_document_path, class: 'button radius'
+
+
+  .existent-tags-list.column.large-3
+    %h6.subheader Tags
+
+    %dl.sub-nav
+      %dd.active
+        %a{href: "#"} Ruby
+      %dd.active
+        %a{href: "#"} Javascript
+      %dd.active
+        %a{href: "#"} Rails
+
+.row
+  .column.large-6
+    %h2 Recent documents
+
+    %ul.documents.disc
+      = render @documents
+
+  .pupular-tags.column.large-6
+    %h2 Popular tags
+
+    %dl.sub-nav
+      %dd.active
+        %a{href: "#"} Ruby
+      %dd.active
+        %a{href: "#"} Javascript

@@ -6,10 +6,10 @@ def login_to_google(mock_options)
   visit '/auth/google_oauth2'
 end
 
-feature 'Document visualization' do
-  let(:sentence) { Faker::Lorem.sentence }
-  let(:markdown_h3) { '### ' + sentence }
-  let!(:document) { create :document, body: markdown_h3 }
+feature 'Search documents' do
+  let!(:title) { Faker::Lorem.sentence }
+  let!(:document) { create :document, title: title }
+  let!(:document2) { create :document }
   let!(:user) do
     create(
       :tango_user,
@@ -23,11 +23,11 @@ feature 'Document visualization' do
     visit root_path
   end
 
-  scenario 'user sees a document', :js do
-    within('.documents') do
-      click_link(document.title)
-    end
+  scenario 'As a user I can search a document' do
+    fill_in('search', with: title)
+    click_button('Search')
 
-    find('h3', text: sentence)
+    expect(page.body).to include(document.title)
+    expect(page.body).to_not include(document2.title)
   end
 end

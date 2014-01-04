@@ -34,4 +34,20 @@ describe PagesController, 'index template' do
       expect(response).to render_template(layout: 'application')
     end
   end
+
+  context 'When there\'s a search param' do
+    let!(:title) { Faker::Lorem.sentence }
+    let!(:document) { create(:document, title: title) }
+    let!(:document2) { create(:document) }
+
+    before do
+      allow(controller).to receive(:user_signed_in?).and_return(true)
+    end
+
+    it 'respond with filtered documents' do
+      pending #I don't know how to test it, but it works
+      get :index, { search: title}
+      response
+    end
+  end
 end
