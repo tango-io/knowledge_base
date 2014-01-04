@@ -52,4 +52,24 @@ describe PagesController, '#index' do
       expect(assigns(:tags)).to eq([tag])
     end
   end
+
+
+  describe 'Documents' do
+    let!(:documents) do
+      (1..20).each do
+        create :document
+      end
+    end
+
+    let!(:recent_documents){ Document.order('created_at DESC').limit(10) }
+
+    before do
+      login_user
+      get :index
+    end
+
+    it 'assigns the 10 most recent documents' do
+      expect(assigns(:documents)).to match_array(recent_documents)
+    end
+  end
 end
