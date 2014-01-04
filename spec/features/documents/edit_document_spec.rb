@@ -2,7 +2,6 @@ require 'spec_helper'
 
 def login_to_google(mock_options)
   OmniAuth.config.add_mock :google_oauth2, mock_options
-
   visit '/auth/google_oauth2'
 end
 

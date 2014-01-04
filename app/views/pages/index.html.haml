@@ -34,7 +34,6 @@
     %h2 Popular tags
 
     %dl.sub-nav
-      %dd.active
-        %a{href: "#"} Ruby
-      %dd.active
-        %a{href: "#"} Javascript
+      - @popular_tags.each do |tag|
+        %dd.active
+          = link_to tag, search_index_path(tag: tag)

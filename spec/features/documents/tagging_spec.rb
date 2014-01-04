@@ -15,7 +15,7 @@ feature 'Tagging' do
     login_to_google(uid: user.uid, info: { email: user.email }, credentials: {})
 
     visit root_path
-    click_link tags[0]
+    click_link tags[0], match: :first
   end
 
   context 'when the user clicks on a tag' do

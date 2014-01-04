@@ -5,6 +5,7 @@ describe 'pages/index.html.haml' do
 
   before do
     assign(:documents, stub_model(Document))
+    assign(:popular_tags, tags)
     assign(:tags, tags)
 
     render
