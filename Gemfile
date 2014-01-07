@@ -14,6 +14,7 @@ gem 'pg'
 gem 'omniauth-google-oauth2'
 
 gem 'acts-as-taggable-on'
+gem 'puma'
 
 group :development do
   gem 'spring'
