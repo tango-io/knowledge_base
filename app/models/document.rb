@@ -1,5 +1,8 @@
 class Document < ActiveRecord::Base
+  belongs_to :notebook
+
   validates_presence_of :title
+
   acts_as_taggable
   acts_as_taggable_on :tag_list
 

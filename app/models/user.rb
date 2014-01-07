@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   validates :email,
     uniqueness: true,
     format: { with:  /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Invalid email' }
+
+  has_many :notebooks
 end
