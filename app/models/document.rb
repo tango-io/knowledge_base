@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
   belongs_to :notebook
 
-  validates_presence_of :title
+  validates :title, :notebook, presence: true
 
   acts_as_taggable
   acts_as_taggable_on :tag_list

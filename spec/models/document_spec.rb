@@ -4,7 +4,8 @@ describe Document do
   let!(:document) { create :document }
 
   context 'Validations' do
-    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:title)    }
+    it { should validate_presence_of(:notebook) }
   end
 
   describe '.search' do
@@ -29,6 +30,12 @@ describe Document do
       expect(Document.popular_tags).to eq(
         Document.tag_counts_on(:tags, limit: 10, order: 'count desc')
       )
+    end
+  end
+
+  context 'notebooks' do
+    it '' do
+
     end
   end
 end
